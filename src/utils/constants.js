@@ -1,0 +1,1 @@
+export const kServerURL = 'http://localhost:5000';
