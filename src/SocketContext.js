@@ -19,7 +19,7 @@ const ContextProvider = ({ children }) => {
 
     // Refs
     const videoEl = useRef();
-    const userVideo = useRef();
+    const userVideoEl = useRef();
     const connectionRef = useRef();
 
     /**
@@ -56,7 +56,7 @@ const ContextProvider = ({ children }) => {
         });
 
         peer.on('stream', (currentStream) => {
-            userVideo.current.srcObject = currentStream;
+            userVideoEl.current.srcObject = currentStream;
         });
 
         peer.signal(call.signal);
@@ -76,7 +76,7 @@ const ContextProvider = ({ children }) => {
         });
 
         peer.on('stream', (currentStream) => {
-            userVideo.current.srcObject = currentStream;
+            userVideoEl.current.srcObject = currentStream;
         });
 
         socket.on('callaccepted', (signal) => {
@@ -105,7 +105,7 @@ const ContextProvider = ({ children }) => {
             call,
             callAccepted,
             videoEl,
-            userVideo,
+            userVideoEl,
             stream,
             name,
             setName,
