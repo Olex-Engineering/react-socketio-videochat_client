@@ -1,8 +1,8 @@
-import React, { SocketContext, useState } from 'react';
-import { Button, TextField, Grid, Typpgraphy, Container, Paper } from '@material-ui/core';
+import React, {useState, useContext } from 'react';
+import { Button, TextField, Grid, Typography, Container, Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { Assigment, Phone, PhoneDisabled } from '@material-ui/icons';
+import { Assignment, Phone, PhoneDisabled } from '@material-ui/icons';
 
 import { SocketContext } from '../SocketContext';
 
@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const Options = ( { children } ) => {
-    const { me, callAccepted, name, setName, callEnded, leaveCall, callUser } = useContext(SocketContext);
+    const { currentUserId, callAccepted, name, setName, callEnded, leaveCall, callUser } = useContext(SocketContext);
     const [idToCall, setIdToCall] = useState();
     const classes = useStyles();
 
@@ -50,7 +50,7 @@ export const Options = ( { children } ) => {
                         <Grid item xs={12} md={6} className={classes.padding}>
                             <Typography gutterBottom variant="h6">Account Info</Typography>
                             <TextField label="Name" value={name} onChange={(e) => setName(e.target.value)}  fullwidth/>
-                            <CopyToClipboard text={me} className={classes.margin}>
+                            <CopyToClipboard text={currentUserId} className={classes.margin}>
                                 <Button variant="contained" color="primary" fullWidth startIcon={<Assignment fontSize="large" />}>
                                     Copy Your ID
                                 </Button>
@@ -83,9 +83,8 @@ export const Options = ( { children } ) => {
                         </Grid>
                     </Grid>
                 </form>
-            </Paper>
-            Options
             { children }
+            </Paper>
         </Container>
     )
 }
