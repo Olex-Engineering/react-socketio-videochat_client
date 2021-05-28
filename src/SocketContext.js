@@ -101,7 +101,7 @@ const ContextProvider = ({ children }) => {
     }
 
     return (
-        <SocketContext value={{
+        <SocketContext.Provider value={{
             call,
             callAccepted,
             videoEl,
@@ -116,7 +116,7 @@ const ContextProvider = ({ children }) => {
             answerCall,
         }}>
             { children }
-        </SocketContext>
+        </SocketContext.Provider>
     )
 }
 
