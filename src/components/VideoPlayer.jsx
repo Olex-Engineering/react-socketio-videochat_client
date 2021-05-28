@@ -44,7 +44,7 @@ export const VideoPlayer = () => {
 
             {/* Target user video */}
             {
-                callAccepted && !callEnded (
+                callAccepted && !callEnded && (
                     <Paper className={classes.paper}>
                         <Grid item xs={12} md={6}>
                             <Typography variant="h5" gutterBottom>{ call.name || 'Name' }</Typography>
