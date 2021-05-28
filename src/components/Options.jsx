@@ -49,7 +49,7 @@ export const Options = ( { children } ) => {
                     <Grid container className={classes.gridContainer}>
                         <Grid item xs={12} md={6} className={classes.padding}>
                             <Typography gutterBottom variant="h6">Account Info</Typography>
-                            <TextField label="Name" value={name} onChange={(e) => setName(e.target.value)}  fullwidth/>
+                            <TextField label="Name" value={name} onChange={(e) => setName(e.target.value)}  fullWidth/>
                             <CopyToClipboard text={currentUserId} className={classes.margin}>
                                 <Button variant="contained" color="primary" fullWidth startIcon={<Assignment fontSize="large" />}>
                                     Copy Your ID
@@ -58,7 +58,7 @@ export const Options = ( { children } ) => {
                         </Grid>
                         <Grid item xs={12} md={6} className={classes.padding}>
                             <Typography gutterBottom variant="h6">Make a call</Typography>
-                            <TextField label="ID to call" value={idToCall} onChange={(e) => setIdToCall(e.target.value)}  fullwidth/>
+                            <TextField label="ID to call" value={idToCall} onChange={(e) => setIdToCall(e.target.value)}  fullWidth/>
                             {callAccepted && !callEnded ? (
                                 <Button
                                     className={classes.margin}
