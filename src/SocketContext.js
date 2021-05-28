@@ -27,14 +27,16 @@ const ContextProvider = ({ children }) => {
      * Subscribe on socket events
      */
     useEffect(() => {
-        const getCurrentStream = async () => {
-            const currentStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
-            setStream(currentStream);
+        (async () => {
+            try {
+                const currentStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+                setStream(currentStream);
 
-            videoEl.current.srcObject = currentStream;
-        }
-
-        getCurrentStream();
+                videoEl.current.srcObject = currentStream;
+            } catch (e) {
+                console.warn(e);
+            }
+        })()
 
         socket.on('me', id => serCurrentUserId(id))
 
